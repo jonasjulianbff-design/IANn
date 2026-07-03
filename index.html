@@ -20,26 +20,26 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 10px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             animation: slideDown 0.6s ease-out;
         }
 
         header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 2.5em;
+            margin-bottom: 5px;
             text-shadow: 0 0 20px rgba(30, 144, 255, 0.8);
             color: #1ef0ff;
         }
 
         header p {
-            font-size: 1.1em;
+            font-size: 0.9em;
             color: #a8a8a8;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         /* Name Screen */
@@ -66,197 +66,40 @@
             background: rgba(22, 33, 62, 0.95);
             border: 3px solid #1ef0ff;
             border-radius: 15px;
-            padding: 50px;
+            padding: 40px 30px;
             text-align: center;
-            max-width: 400px;
+            max-width: 350px;
             box-shadow: 0 0 50px rgba(30, 144, 255, 0.6);
         }
 
         .name-container h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 2em;
+            margin-bottom: 15px;
             text-shadow: 0 0 20px rgba(30, 144, 255, 0.8);
         }
 
         .name-container p {
-            font-size: 1.2em;
+            font-size: 1em;
             color: #a8a8a8;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .name-container input {
             width: 100%;
-            padding: 15px;
-            font-size: 1.1em;
+            padding: 12px;
+            font-size: 1em;
             border: 2px solid #1ef0ff;
             border-radius: 8px;
             background: rgba(10, 10, 30, 0.8);
             color: #fff;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             box-sizing: border-box;
-        }
-
-        .name-container input::placeholder {
-            color: #666;
-        }
-
-        .name-container input:focus {
-            outline: none;
-            background: rgba(30, 144, 255, 0.2);
-            box-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
         }
 
         .name-container button {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 1.2em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
-        }
-
-        .name-container button:hover {
-            background: linear-gradient(135deg, #00bfff 0%, #1e90ff 100%);
-            box-shadow: 0 0 25px rgba(30, 144, 255, 0.8);
-            transform: translateY(-2px);
-        }
-
-        /* Main Game */
-        .game-container {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            justify-content: center;
-            animation: fadeIn 0.8s ease-out;
-            max-width: 1200px;
-        }
-
-        #game {
-            width: 400px;
-            height: 700px;
-            background: linear-gradient(to bottom, #333, #222);
-            position: relative;
-            overflow: hidden;
-            border: 6px solid #1ef0ff;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(30, 144, 255, 0.6);
-        }
-
-        .line {
-            position: absolute;
-            width: 10px;
-            height: 80px;
-            background: white;
-            left: 195px;
-            opacity: 0.7;
-        }
-
-        #player {
-            width: 60px;
-            height: 100px;
-            background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
-            position: absolute;
-            bottom: 20px;
-            left: 170px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(30, 144, 255, 0.8);
-            transition: left 0.1s ease;
-        }
-
-        .enemy {
-            width: 60px;
-            height: 100px;
-            background: linear-gradient(135deg, #ff4500 0%, #ff6347 100%);
-            position: absolute;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
-        }
-
-        #score {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            color: #1ef0ff;
-            font-size: 24px;
-            font-weight: bold;
-            z-index: 10;
-            text-shadow: 0 0 10px rgba(30, 144, 255, 0.8);
-        }
-
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 350px;
-        }
-
-        .info-panel {
-            background: rgba(22, 33, 62, 0.9);
-            border: 3px solid #1ef0ff;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 0 30px rgba(30, 144, 255, 0.4);
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .info-panel h2 {
-            margin-bottom: 20px;
-            color: #1ef0ff;
-            text-shadow: 0 0 10px rgba(30, 144, 255, 0.6);
-        }
-
-        .player-info {
-            background: rgba(30, 50, 80, 0.8);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #ff9500;
-            margin-bottom: 15px;
-        }
-
-        .player-info strong {
-            color: #ff9500;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .player-info p {
-            color: #1ef0ff;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-
-        .controls {
-            background: rgba(30, 50, 80, 0.8);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 4px solid #1ef0ff;
-        }
-
-        .controls strong {
-            color: #1ef0ff;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .controls p {
-            margin: 5px 0;
-            font-size: 0.95em;
-            color: #d0d0d0;
-        }
-
-        button {
-            width: 100%;
             padding: 12px;
-            margin-top: 15px;
             background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
             border: none;
             border-radius: 8px;
@@ -268,79 +111,318 @@
             box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
         }
 
+        /* Shop Modal */
+        #shopModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        #shopModal.show {
+            display: flex;
+        }
+
+        .shop-container {
+            background: rgba(22, 33, 62, 0.95);
+            border: 3px solid #ff9500;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 0 50px rgba(255, 150, 0, 0.6);
+        }
+
+        .shop-container h2 {
+            text-align: center;
+            color: #ff9500;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .car-item {
+            background: rgba(30, 50, 80, 0.8);
+            border: 2px solid #1ef0ff;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .car-item:hover {
+            background: rgba(30, 144, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .car-item.owned {
+            background: rgba(0, 255, 100, 0.1);
+            border-color: #00ff64;
+        }
+
+        .car-item.owned::after {
+            content: "✓ BESITZT";
+            color: #00ff64;
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .car-model {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+
+        .car-name {
+            color: #1ef0ff;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+
+        .car-price {
+            color: #ff9500;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .car-item button {
+            width: 100%;
+            padding: 8px;
+            font-size: 0.85em;
+        }
+
+        .close-shop {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .close-shop button {
+            width: 100%;
+            max-width: 200px;
+        }
+
+        /* Main Game */
+        .game-wrapper {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1000px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        #game {
+            width: 350px;
+            height: 600px;
+            background: linear-gradient(to bottom, #333, #222);
+            position: relative;
+            overflow: hidden;
+            border: 6px solid #1ef0ff;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(30, 144, 255, 0.6);
+        }
+
+        .line {
+            position: absolute;
+            width: 8px;
+            height: 60px;
+            background: white;
+            left: 171px;
+            opacity: 0.7;
+        }
+
+        #player {
+            position: absolute;
+            bottom: 15px;
+            left: 150px;
+            width: 50px;
+            height: 75px;
+            transition: left 0.1s ease;
+            z-index: 10;
+        }
+
+        .enemy {
+            position: absolute;
+            width: 50px;
+            height: 75px;
+        }
+
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #1ef0ff;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 10;
+            text-shadow: 0 0 10px rgba(30, 144, 255, 0.8);
+        }
+
+        #coins {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #ff9500;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 10;
+            text-shadow: 0 0 10px rgba(255, 150, 0, 0.8);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+        }
+
+        .info-panel {
+            background: rgba(22, 33, 62, 0.9);
+            border: 3px solid #1ef0ff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(30, 144, 255, 0.4);
+        }
+
+        .info-panel h2 {
+            margin-bottom: 15px;
+            color: #1ef0ff;
+            font-size: 1.2em;
+        }
+
+        .player-info {
+            background: rgba(30, 50, 80, 0.8);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #ff9500;
+            margin-bottom: 12px;
+        }
+
+        .player-info strong {
+            color: #ff9500;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .player-info p {
+            color: #1ef0ff;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .controls {
+            background: rgba(30, 50, 80, 0.8);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #1ef0ff;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+        }
+
+        .controls strong {
+            color: #1ef0ff;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .controls p {
+            margin: 4px 0;
+            color: #d0d0d0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
+        }
+
         button:hover {
-            background: linear-gradient(135deg, #00bfff 0%, #1e90ff 100%);
-            box-shadow: 0 0 25px rgba(30, 144, 255, 0.8);
             transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(30, 144, 255, 0.8);
+        }
+
+        .shop-btn {
+            background: linear-gradient(135deg, #ff6b00 0%, #ff9500 100%);
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+        }
+
+        .shop-btn:hover {
+            box-shadow: 0 0 25px rgba(255, 107, 0, 0.8);
         }
 
         .leaderboard-panel {
             background: rgba(22, 33, 62, 0.9);
             border: 3px solid #ff4500;
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             box-shadow: 0 0 30px rgba(255, 69, 0, 0.3);
-            max-height: 400px;
+            max-height: 350px;
             overflow-y: auto;
         }
 
         .leaderboard-panel h2 {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #ff9500;
-            text-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
-            font-size: 1.3em;
+            font-size: 1.2em;
         }
 
         .leaderboard-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            margin: 8px 0;
+            padding: 8px;
+            margin: 6px 0;
             background: rgba(30, 50, 80, 0.6);
             border-radius: 5px;
             border-left: 4px solid #1ef0ff;
+            font-size: 0.9em;
         }
 
         .leaderboard-item.top-1 {
             background: rgba(255, 215, 0, 0.1);
             border-left-color: #ffd700;
-            font-weight: bold;
-        }
-
-        .leaderboard-item.top-2 {
-            background: rgba(192, 192, 192, 0.1);
-            border-left-color: #c0c0c0;
-        }
-
-        .leaderboard-item.top-3 {
-            background: rgba(205, 127, 50, 0.1);
-            border-left-color: #cd7f32;
         }
 
         .leaderboard-rank {
             font-weight: bold;
             color: #1ef0ff;
-            min-width: 30px;
+            min-width: 25px;
         }
 
         .leaderboard-name {
             flex: 1;
-            margin: 0 15px;
+            margin: 0 10px;
             color: #d0d0d0;
         }
 
         .leaderboard-score {
             color: #ff9500;
             font-weight: bold;
-            min-width: 50px;
-            text-align: right;
-        }
-
-        .loading {
-            text-align: center;
-            color: #1ef0ff;
-            font-size: 0.9em;
         }
 
         .game-over-overlay {
@@ -364,114 +446,145 @@
         }
 
         .game-over-overlay h2 {
-            font-size: 3em;
+            font-size: 2.5em;
             color: #ff4500;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
         }
 
-        .game-over-overlay .score-info {
-            font-size: 1.5em;
+        .score-info {
+            font-size: 1.2em;
             color: #1ef0ff;
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(30, 144, 255, 0.8);
-        }
-
-        .game-over-overlay .score-info.new-record {
-            color: #ffd700;
-            font-size: 2em;
-            animation: pulse 0.5s infinite;
-        }
-
-        .game-over-overlay p {
-            font-size: 2em;
-            color: #1ef0ff;
-            margin-bottom: 30px;
-            text-shadow: 0 0 15px rgba(30, 144, 255, 0.8);
+            margin-bottom: 15px;
         }
 
         .game-over-overlay button {
-            width: 200px;
+            width: 180px;
+            padding: 12px;
         }
 
         footer {
-            margin-top: 40px;
+            margin-top: 20px;
             text-align: center;
             color: #a8a8a8;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
 
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        /* Mobile Controls */
+        .mobile-controls {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 300px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            z-index: 50;
+        }
+
+        .mobile-controls button {
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            font-size: 2em;
+            background: rgba(30, 144, 255, 0.7);
+            border-radius: 50%;
+            margin: 0;
         }
 
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2em;
+                font-size: 1.8em;
             }
 
             #game {
                 width: 300px;
-                height: 600px;
-            }
-
-            #player {
-                width: 50px;
-                height: 80px;
-                bottom: 15px;
-                left: 125px;
-            }
-
-            .enemy {
-                width: 50px;
-                height: 80px;
+                height: 500px;
             }
 
             .line {
-                width: 8px;
-                height: 60px;
                 left: 146px;
             }
 
-            .sidebar {
-                width: 100%;
-                max-width: 350px;
+            #player {
+                width: 45px;
+                height: 65px;
+                left: 127.5px;
             }
 
-            .game-container {
-                gap: 15px;
-                flex-direction: column;
+            .enemy {
+                width: 45px;
+                height: 65px;
+            }
+
+            .sidebar {
+                width: 280px;
+            }
+
+            .info-panel, .leaderboard-panel {
+                max-height: 250px;
+            }
+
+            .game-wrapper {
+                gap: 10px;
+            }
+
+            .mobile-controls {
+                display: flex !important;
+            }
+
+            .shop-container {
+                max-width: 90%;
+            }
+
+            .shop-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.4em;
+            }
+
+            header p {
+                font-size: 0.75em;
+            }
+
+            #game {
+                width: 280px;
+                height: 480px;
+            }
+
+            .sidebar {
+                width: 280px;
+            }
+
+            .shop-container {
+                padding: 20px;
+            }
+
+            .name-container {
+                padding: 30px 20px;
+                max-width: 90%;
             }
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(30, 50, 80, 0.3);
-            border-radius: 10px;
+            width: 6px;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -491,19 +604,34 @@
         </div>
     </div>
 
+    <!-- Shop Modal -->
+    <div id="shopModal">
+        <div class="shop-container">
+            <h2>🛒 AUTO SHOP</h2>
+            <div class="shop-grid" id="shopGrid"></div>
+            <div class="close-shop">
+                <button onclick="closeShop()">Zurück zum Spiel</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Game -->
     <header>
         <h1>🏎️ MINI RENNSPIEL</h1>
-        <p>Arcade Racing Game - Weiche dem Verkehr aus!</p>
+        <p>Verdiene Coins und kaufe coole Autos!</p>
     </header>
 
-    <div class="game-container">
+    <div class="game-wrapper">
         <div id="game">
             <div id="score">Punkte: 0</div>
+            <div id="coins">💰 0</div>
             <div id="player"></div>
+            <div class="mobile-controls">
+                <button onclick="moveLeft()">⬅️</button>
+                <button onclick="moveRight()">➡️</button>
+            </div>
             <div class="game-over-overlay" id="gameOverOverlay">
                 <h2>GAME OVER!</h2>
-                <p id="finalScore">Punkte: 0</p>
                 <div class="score-info" id="scoreMessage"></div>
                 <button onclick="restartGame()">Nochmal spielen</button>
             </div>
@@ -511,7 +639,7 @@
 
         <div class="sidebar">
             <div class="info-panel">
-                <h2>📖 Spielanleitung</h2>
+                <h2>📖 Info</h2>
                 
                 <div class="player-info">
                     <strong>👤 Spieler:</strong>
@@ -519,36 +647,36 @@
                 </div>
 
                 <div class="controls">
-                    <strong>Steuerung:</strong>
-                    <p>⬅️ Pfeil links - nach links fahren</p>
-                    <p>➡️ Pfeil rechts - nach rechts fahren</p>
+                    <strong>⌨️ Steuerung:</strong>
+                    <p>⬅️ Pfeil links</p>
+                    <p>➡️ Pfeil rechts</p>
                 </div>
 
                 <div class="controls">
-                    <strong>Ziel des Spiels:</strong>
-                    <p>Weiche den roten Autos aus und sammle Punkte! Jedes Auto, das du überholst, gibt dir einen Punkt.</p>
+                    <strong>🎯 Ziel:</strong>
+                    <p>Weiche Autos aus + verdiene Coins!</p>
                 </div>
 
-                <button onclick="toggleGame()"><span id="toggleBtnText">Spiel pausieren</span></button>
+                <button onclick="toggleGame()"><span id="toggleBtnText">Pause</span></button>
+                <button class="shop-btn" onclick="openShop()">🛒 AUTO SHOP</button>
             </div>
 
             <div class="leaderboard-panel">
-                <h2>🏆 TOP 10 HIGHSCORES</h2>
-                <div id="leaderboard" class="loading">Lade Highscores...</div>
+                <h2>🏆 TOP 10</h2>
+                <div id="leaderboard">Lade...</div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 Mini Rennspiel | Viel Spaß beim Spielen! 🎮</p>
+        <p>© 2026 Mini Rennspiel | Viel Spaß! 🎮</p>
     </footer>
 
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs, where } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs, where, updateDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
-        // Firebase Config
         const firebaseConfig = {
             apiKey: "AIzaSyDMyPEBRQp8oaUy01GPr8QwLFNVaQwKVGk",
             authDomain: "iann-mini-rennspiel.firebaseapp.com",
@@ -559,32 +687,56 @@
             measurementId: "G-RL5KVYTE4R"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+
+        // Car Data
+        const cars = [
+            { name: "Tesla Model 3", emoji: "🔋", price: 0, color: "#FF0000" },
+            { name: "BMW M4", emoji: "🔵", price: 500, color: "#0052CC" },
+            { name: "Mercedes AMG", emoji: "⭐", price: 1000, color: "#00AA00" },
+            { name: "Ferrari", emoji: "🔴", price: 2000, color: "#DC143C" },
+            { name: "Lamborghini", emoji: "👑", price: 3000, color: "#FFD700" },
+            { name: "Bugatti", emoji: "💎", price: 5000, color: "#00FFFF" },
+            { name: "Porsche", emoji: "⚡", price: 4000, color: "#FF6B00" },
+            { name: "Aston Martin", emoji: "🎩", price: 3500, color: "#00AA00" },
+            { name: "Maserati", emoji: "🏁", price: 2500, color: "#FF1493" },
+            { name: "McLaren", emoji: "🚀", price: 6000, color: "#FF6600" }
+        ];
 
         // Game Variables
         const game = document.getElementById("game");
         const player = document.getElementById("player");
         const scoreText = document.getElementById("score");
+        const coinsText = document.getElementById("coins");
         const gameOverOverlay = document.getElementById("gameOverOverlay");
-        const finalScoreText = document.getElementById("finalScore");
         const scoreMessage = document.getElementById("scoreMessage");
         const toggleBtn = document.getElementById("toggleBtnText");
         const nameScreen = document.getElementById("nameScreen");
         const nameInput = document.getElementById("nameInput");
         const currentPlayerDisplay = document.getElementById("currentPlayer");
         const leaderboardDiv = document.getElementById("leaderboard");
+        const shopModal = document.getElementById("shopModal");
+        const shopGrid = document.getElementById("shopGrid");
 
-        let playerX = 170;
+        let playerX = 127.5;
         let score = 0;
+        let coins = 0;
         let gameOver = false;
         let gamePaused = false;
-        let gameRunning = true;
+        let gameRunning = false;
         let playerName = "";
         let playerBestScore = 0;
+        let ownedCars = [0]; // Tesla ist kostenlos
+        let currentCarIndex = 0;
 
-        // Start Game Function
+        // Create Player Car
+        function updatePlayerCar() {
+            const car = cars[currentCarIndex];
+            player.innerHTML = `<div style="width: 100%; height: 100%; background: ${car.color}; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2.5em; box-shadow: 0 0 15px ${car.color};">${car.emoji}</div>`;
+            player.style.left = playerX + "px";
+        }
+
         window.startGame = function() {
             const name = nameInput.value.trim();
             if (!name) {
@@ -594,23 +746,24 @@
             
             playerName = name;
             localStorage.setItem("playerName", playerName);
+            localStorage.setItem("ownedCars", JSON.stringify(ownedCars));
+            localStorage.setItem("currentCarIndex", currentCarIndex);
             nameScreen.classList.add("hidden");
             currentPlayerDisplay.textContent = playerName;
             
-            loadPlayerBestScore();
+            loadPlayerData();
             loadLeaderboard();
+            updatePlayerCar();
+            gameRunning = true;
             update();
         };
 
-        // Allow Enter key to start game
         nameInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") {
-                window.startGame();
-            }
+            if (e.key === "Enter") window.startGame();
         });
 
-        // Load player's best score from Firebase
-        async function loadPlayerBestScore() {
+        // Load Player Data
+        async function loadPlayerData() {
             try {
                 const q = query(
                     collection(db, "highscores"),
@@ -622,12 +775,62 @@
                 
                 if (!querySnapshot.empty) {
                     playerBestScore = querySnapshot.docs[0].data().score;
+                    coins = querySnapshot.docs[0].data().coins || 0;
+                } else {
+                    coins = 0;
                 }
+                
+                const savedOwnedCars = localStorage.getItem("ownedCars");
+                if (savedOwnedCars) {
+                    ownedCars = JSON.parse(savedOwnedCars);
+                }
+                
+                coinsText.textContent = "💰 " + coins;
             } catch (error) {
-                console.error("Fehler beim Laden des Best Scores:", error);
-                playerBestScore = 0;
+                console.error("Fehler beim Laden:", error);
             }
         }
+
+        window.openShop = function() {
+            shopGrid.innerHTML = "";
+            cars.forEach((car, index) => {
+                const isOwned = ownedCars.includes(index);
+                const div = document.createElement("div");
+                div.className = "car-item" + (isOwned ? " owned" : "");
+                
+                let buttonHTML = "";
+                if (!isOwned) {
+                    buttonHTML = `<button onclick="buyCar(${index})" style="background: linear-gradient(135deg, #ff6b00 0%, #ff9500 100%);">Kaufen</button>`;
+                }
+                
+                div.innerHTML = `
+                    <div class="car-model">${car.emoji}</div>
+                    <div class="car-name">${car.name}</div>
+                    <div class="car-price">${car.price === 0 ? "KOSTENLOS" : car.price + " 💰"}</div>
+                    ${buttonHTML}
+                `;
+                shopGrid.appendChild(div);
+            });
+            shopModal.classList.add("show");
+        };
+
+        window.closeShop = function() {
+            shopModal.classList.remove("show");
+        };
+
+        window.buyCar = function(index) {
+            if (coins >= cars[index].price) {
+                coins -= cars[index].price;
+                ownedCars.push(index);
+                localStorage.setItem("ownedCars", JSON.stringify(ownedCars));
+                localStorage.setItem("coins", coins);
+                coinsText.textContent = "💰 " + coins;
+                alert("🎉 " + cars[index].name + " gekauft!");
+                window.openShop();
+            } else {
+                alert("❌ Nicht genug Coins! Du brauchst " + (cars[index].price - coins) + " mehr.");
+            }
+        };
 
         // Load Leaderboard
         async function loadLeaderboard() {
@@ -643,141 +846,132 @@
                     const item = document.createElement("div");
                     item.className = `leaderboard-item top-${rank}`;
                     
-                    let medal = "·";
+                    let medal = rank + ".";
                     if (rank === 1) medal = "🥇";
                     else if (rank === 2) medal = "🥈";
                     else if (rank === 3) medal = "🥉";
                     
                     item.innerHTML = `
-                        <span class="leaderboard-rank">${medal} ${rank}.</span>
+                        <span class="leaderboard-rank">${medal}</span>
                         <span class="leaderboard-name">${data.name}</span>
                         <span class="leaderboard-score">${data.score}</span>
                     `;
                     leaderboardDiv.appendChild(item);
                     rank++;
                 });
-
-                if (querySnapshot.empty) {
-                    leaderboardDiv.innerHTML = "<p style='text-align: center; color: #888;'>Noch keine Scores vorhanden 🚀</p>";
-                }
             } catch (error) {
-                console.error("Fehler beim Laden der Leaderboard:", error);
-                leaderboardDiv.innerHTML = "<p style='text-align: center; color: #ff4500;'>Fehler beim Laden ❌</p>";
+                console.error("Fehler:", error);
             }
         }
 
-        // Save Score to Firebase - nur wenn besser als vorher
+        // Save Score
         async function saveScore() {
-            if (score <= playerBestScore) {
-                scoreMessage.textContent = `Dein Best Score: ${playerBestScore} 💪`;
-                scoreMessage.classList.remove("new-record");
-                return;
-            }
-            
             try {
                 await addDoc(collection(db, "highscores"), {
                     name: playerName,
                     score: score,
+                    coins: coins,
                     timestamp: new Date()
                 });
-                
-                scoreMessage.textContent = `🎉 NEUER PERSÖNLICHER REKORD! 🎉`;
-                scoreMessage.classList.add("new-record");
-                playerBestScore = score;
-                
-                // Reload leaderboard
                 loadLeaderboard();
             } catch (error) {
                 console.error("Fehler beim Speichern:", error);
-                scoreMessage.textContent = "Fehler beim Speichern ❌";
             }
         }
 
-        // Create enemy
+        // Create Enemy
         const enemy = document.createElement("div");
         enemy.className = "enemy";
-        enemy.style.left = Math.floor(Math.random() * 5) * 70 + 25 + "px";
-        enemy.style.top = "-120px";
+        enemy.style.left = Math.floor(Math.random() * 5) * 62.5 + 30 + "px";
+        enemy.style.top = "-90px";
+        enemy.style.background = "linear-gradient(135deg, #ff4500 0%, #ff6347 100%)";
+        enemy.style.borderRadius = "8px";
+        enemy.style.boxShadow = "0 0 15px rgba(255, 69, 0, 0.8)";
+        enemy.innerHTML = '<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2em;">🚗</div>';
         game.appendChild(enemy);
 
-        // Create road lines
+        // Create Road Lines
         for (let i = 0; i < 10; i++) {
             let line = document.createElement("div");
             line.className = "line";
-            line.style.top = i * 100 + "px";
+            line.style.top = i * 60 + "px";
             game.appendChild(line);
         }
 
-        // Keyboard controls
+        // Keyboard Controls
         document.addEventListener("keydown", e => {
             if (gamePaused || gameOver) return;
-
-            if (e.key === "ArrowLeft" && playerX > 20) {
-                playerX -= 70;
-            }
-
-            if (e.key === "ArrowRight" && playerX < 300) {
-                playerX += 70;
-            }
-
+            if (e.key === "ArrowLeft" && playerX > 15) playerX -= 62.5;
+            if (e.key === "ArrowRight" && playerX < 235) playerX += 62.5;
             player.style.left = playerX + "px";
         });
 
+        window.moveLeft = function() {
+            if (playerX > 15) {
+                playerX -= 62.5;
+                player.style.left = playerX + "px";
+            }
+        };
+
+        window.moveRight = function() {
+            if (playerX < 235) {
+                playerX += 62.5;
+                player.style.left = playerX + "px";
+            }
+        };
+
         function update() {
-            if (gameOver || gamePaused) return;
+            if (gameOver || gamePaused || !gameRunning) return;
 
-            // Update road lines
+            // Update Lines
             document.querySelectorAll(".line").forEach(line => {
-                line.style.top = (parseInt(line.style.top) + 8) + "px";
-
-                if (parseInt(line.style.top) > 700) {
-                    line.style.top = "-80px";
-                }
+                line.style.top = (parseInt(line.style.top) + 6) + "px";
+                if (parseInt(line.style.top) > 500) line.style.top = "-60px";
             });
 
-            // Update enemy
-            enemy.style.top = (parseInt(enemy.style.top || "-120") + 8) + "px";
+            // Update Enemy
+            enemy.style.top = (parseInt(enemy.style.top || "-90") + 6) + "px";
 
-            if (parseInt(enemy.style.top) > 700) {
-                enemy.style.top = "-120px";
-                enemy.style.left = Math.floor(Math.random() * 5) * 70 + 25 + "px";
+            if (parseInt(enemy.style.top) > 500) {
+                enemy.style.top = "-90px";
+                enemy.style.left = Math.floor(Math.random() * 5) * 62.5 + 30 + "px";
                 score++;
+                coins += 10; // 10 Coins pro Auto
                 scoreText.innerHTML = "Punkte: " + score;
+                coinsText.textContent = "💰 " + coins;
             }
 
-            // Collision detection
+            // Collision
             let px = player.offsetLeft;
             let py = player.offsetTop;
-
             let ex = enemy.offsetLeft;
             let ey = enemy.offsetTop;
 
-            if (
-                px < ex + 60 &&
-                px + 60 > ex &&
-                py < ey + 100 &&
-                py + 100 > ey
-            ) {
+            if (px < ex + 50 && px + 50 > ex && py < ey + 75 && py + 75 > ey) {
                 endGame();
+                return;
             }
 
-            if (gameRunning) {
-                requestAnimationFrame(update);
-            }
+            requestAnimationFrame(update);
         }
 
         function endGame() {
             gameOver = true;
             gameRunning = false;
-            finalScoreText.textContent = "Punkte: " + score;
-            gameOverOverlay.classList.add("show");
             
-            // Save score to Firebase (nur wenn besser)
+            if (score > playerBestScore) {
+                scoreMessage.innerHTML = `🎉 NEUER REKORD!<br>Punkte: ${score}<br>Coins verdient: ${coins}`;
+                playerBestScore = score;
+            } else {
+                scoreMessage.innerHTML = `Punkte: ${score}<br>Coins verdient: ${coins}`;
+            }
+            
+            gameOverOverlay.classList.add("show");
             saveScore();
         }
 
         window.restartGame = function() {
-            playerX = 170;
+            playerX = 127.5;
             score = 0;
             gameOver = false;
             gamePaused = false;
@@ -785,31 +979,30 @@
             scoreText.innerHTML = "Punkte: 0";
             player.style.left = playerX + "px";
             gameOverOverlay.classList.remove("show");
-            enemy.style.top = "-120px";
-            enemy.style.left = Math.floor(Math.random() * 5) * 70 + 25 + "px";
-            toggleBtn.textContent = "Spiel pausieren";
+            enemy.style.top = "-90px";
+            enemy.style.left = Math.floor(Math.random() * 5) * 62.5 + 30 + "px";
+            toggleBtn.textContent = "Pause";
             update();
         };
 
         window.toggleGame = function() {
             if (gameOver) return;
-            
             gamePaused = !gamePaused;
-            toggleBtn.textContent = gamePaused ? "Spiel fortsetzen" : "Spiel pausieren";
-            
-            if (!gamePaused) {
-                update();
-            }
+            toggleBtn.textContent = gamePaused ? "Fortsetzen" : "Pause";
+            if (!gamePaused) update();
         };
 
-        // Reload leaderboard every 5 seconds
+        // Auto save
+        setInterval(() => {
+            localStorage.setItem("coins", coins);
+            localStorage.setItem("ownedCars", JSON.stringify(ownedCars));
+        }, 5000);
+
         setInterval(loadLeaderboard, 5000);
 
-        // Set saved name if exists
+        // Load saved name
         const savedName = localStorage.getItem("playerName");
-        if (savedName) {
-            nameInput.value = savedName;
-        }
+        if (savedName) nameInput.value = savedName;
     </script>
 </body>
 </html>
