@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏎️ Mini Rennspiel - Arcade Racing Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(30, 144, 255, 0.8);
+            color: #1ef0ff;
+        }
+
+        header p {
+            font-size: 1.1em;
+            color: #a8a8a8;
+            margin-bottom: 15px;
+        }
+
+        .game-container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        #game {
+            width: 400px;
+            height: 700px;
+            background: linear-gradient(to bottom, #333, #222);
+            position: relative;
+            overflow: hidden;
+            border: 6px solid #1ef0ff;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(30, 144, 255, 0.6);
+        }
+
+        .line {
+            position: absolute;
+            width: 10px;
+            height: 80px;
+            background: white;
+            left: 195px;
+            opacity: 0.7;
+        }
+
+        #player {
+            width: 60px;
+            height: 100px;
+            background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+            position: absolute;
+            bottom: 20px;
+            left: 170px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.8);
+            transition: left 0.1s ease;
+        }
+
+        .enemy {
+            width: 60px;
+            height: 100px;
+            background: linear-gradient(135deg, #ff4500 0%, #ff6347 100%);
+            position: absolute;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.8);
+        }
+
+        #score {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #1ef0ff;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 10;
+            text-shadow: 0 0 10px rgba(30, 144, 255, 0.8);
+        }
+
+        .info-panel {
+            background: rgba(22, 33, 62, 0.9);
+            border: 3px solid #1ef0ff;
+            border-radius: 10px;
+            padding: 25px;
+            width: 300px;
+            box-shadow: 0 0 30px rgba(30, 144, 255, 0.4);
+        }
+
+        .info-panel h2 {
+            margin-bottom: 20px;
+            color: #1ef0ff;
+            text-shadow: 0 0 10px rgba(30, 144, 255, 0.6);
+        }
+
+        .info-panel p {
+            margin: 12px 0;
+            line-height: 1.6;
+            color: #d0d0d0;
+        }
+
+        .controls {
+            background: rgba(30, 50, 80, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #1ef0ff;
+        }
+
+        .controls strong {
+            color: #1ef0ff;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .controls p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .stats {
+            background: rgba(30, 50, 80, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ff4500;
+        }
+
+        .stats strong {
+            color: #ff9500;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stats p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #00bfff 0%, #1e90ff 100%);
+            box-shadow: 0 0 25px rgba(30, 144, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #a8a8a8;
+            font-size: 0.9em;
+        }
+
+        .game-over-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .game-over-overlay.show {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .game-over-overlay h2 {
+            font-size: 3em;
+            color: #ff4500;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
+        }
+
+        .game-over-overlay p {
+            font-size: 2em;
+            color: #1ef0ff;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(30, 144, 255, 0.8);
+        }
+
+        .game-over-overlay button {
+            width: 200px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            #game {
+                width: 300px;
+                height: 600px;
+            }
+
+            #player {
+                width: 50px;
+                height: 80px;
+                bottom: 15px;
+                left: 125px;
+            }
+
+            .enemy {
+                width: 50px;
+                height: 80px;
+            }
+
+            .line {
+                width: 8px;
+                height: 60px;
+                left: 146px;
+            }
+
+            .info-panel {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .game-container {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏎️ MINI RENNSPIEL</h1>
+        <p>Arcade Racing Game - Weiche dem Verkehr aus!</p>
+    </header>
+
+    <div class="game-container">
+        <div id="game">
+            <div id="score">Punkte: 0</div>
+            <div id="player"></div>
+            <div class="game-over-overlay" id="gameOverOverlay">
+                <h2>GAME OVER!</h2>
+                <p id="finalScore">Punkte: 0</p>
+                <button onclick="restartGame()">Nochmal spielen</button>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <h2>📖 Spielanleitung</h2>
+            
+            <div class="controls">
+                <strong>Steuerung:</strong>
+                <p>⬅️ Pfeil links - nach links fahren</p>
+                <p>➡️ Pfeil rechts - nach rechts fahren</p>
+            </div>
+
+            <div class="stats">
+                <strong>Ziel des Spiels:</strong>
+                <p>Weiche den roten Autos aus und sammle Punkte! Jedes Auto, das du überholst, gibt dir einen Punkt.</p>
+            </div>
+
+            <button onclick="toggleGame()"><span id="toggleBtnText">Spiel pausieren</span></button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Mini Rennspiel | Viel Spaß beim Spielen! 🎮</p>
+    </footer>
+
+    <script>
+        const game = document.getElementById("game");
+        const player = document.getElementById("player");
+        const scoreText = document.getElementById("score");
+        const gameOverOverlay = document.getElementById("gameOverOverlay");
+        const finalScoreText = document.getElementById("finalScore");
+        const toggleBtn = document.getElementById("toggleBtnText");
+
+        let playerX = 170;
+        let score = 0;
+        let gameOver = false;
+        let gamePaused = false;
+        let gameRunning = true;
+
+        // Create enemy
+        const enemy = document.createElement("div");
+        enemy.className = "enemy";
+        enemy.style.left = Math.floor(Math.random() * 5) * 70 + 25 + "px";
+        enemy.style.top = "-120px";
+        game.appendChild(enemy);
+
+        // Create road lines
+        for (let i = 0; i < 10; i++) {
+            let line = document.createElement("div");
+            line.className = "line";
+            line.style.top = i * 100 + "px";
+            game.appendChild(line);
+        }
+
+        // Keyboard controls
+        document.addEventListener("keydown", e => {
+            if (gamePaused || gameOver) return;
+
+            if (e.key === "ArrowLeft" && playerX > 20) {
+                playerX -= 70;
+            }
+
+            if (e.key === "ArrowRight" && playerX < 300) {
+                playerX += 70;
+            }
+
+            player.style.left = playerX + "px";
+        });
+
+        function update() {
+            if (gameOver || gamePaused) return;
+
+            // Update road lines
+            document.querySelectorAll(".line").forEach(line => {
+                line.style.top = (parseInt(line.style.top) + 8) + "px";
+
+                if (parseInt(line.style.top) > 700) {
+                    line.style.top = "-80px";
+                }
+            });
+
+            // Update enemy
+            enemy.style.top = (parseInt(enemy.style.top || "-120") + 8) + "px";
+
+            if (parseInt(enemy.style.top) > 700) {
+                enemy.style.top = "-120px";
+                enemy.style.left = Math.floor(Math.random() * 5) * 70 + 25 + "px";
+                score++;
+                scoreText.innerHTML = "Punkte: " + score;
+            }
+
+            // Collision detection
+            let px = player.offsetLeft;
+            let py = player.offsetTop;
+
+            let ex = enemy.offsetLeft;
+            let ey = enemy.offsetTop;
+
+            if (
+                px < ex + 60 &&
+                px + 60 > ex &&
+                py < ey + 100 &&
+                py + 100 > ey
+            ) {
+                endGame();
+            }
+
+            if (gameRunning) {
+                requestAnimationFrame(update);
+            }
+        }
+
+        function endGame() {
+            gameOver = true;
+            gameRunning = false;
+            finalScoreText.textContent = "Punkte: " + score;
+            gameOverOverlay.classList.add("show");
+        }
+
+        function restartGame() {
+            playerX = 170;
+            score = 0;
+            gameOver = false;
+            gamePaused = false;
+            gameRunning = true;
+            scoreText.innerHTML = "Punkte: 0";
+            player.style.left = playerX + "px";
+            gameOverOverlay.classList.remove("show");
+            enemy.style.top = "-120px";
+            enemy.style.left = Math.floor(Math.random() * 5) * 70 + 25 + "px";
+            toggleBtn.textContent = "Spiel pausieren";
+            update();
+        }
+
+        function toggleGame() {
+            if (gameOver) return;
+            
+            gamePaused = !gamePaused;
+            toggleBtn.textContent = gamePaused ? "Spiel fortsetzen" : "Spiel pausieren";
+            
+            if (!gamePaused) {
+                update();
+            }
+        }
+
+        update();
+    </script>
+</body>
+</html>
