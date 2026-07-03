@@ -675,7 +675,7 @@
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs, where, updateDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+        import { getFirestore, collection, query, orderBy, limit, getDocs, where, writeBatch, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDMyPEBRQp8oaUy01GPr8QwLFNVaQwKVGk",
@@ -727,7 +727,7 @@
         let gameRunning = false;
         let playerName = "";
         let playerBestScore = 0;
-        let ownedCars = [0]; // Tesla ist kostenlos
+        let ownedCars = [0];
         let currentCarIndex = 0;
 
         // Create Player Car
@@ -768,15 +768,16 @@
                 const q = query(
                     collection(db, "highscores"),
                     where("name", "==", playerName),
-                    orderBy("score", "desc"),
                     limit(1)
                 );
                 const querySnapshot = await getDocs(q);
                 
                 if (!querySnapshot.empty) {
-                    playerBestScore = querySnapshot.docs[0].data().score;
-                    coins = querySnapshot.docs[0].data().coins || 0;
+                    const data = querySnapshot.docs[0].data();
+                    playerBestScore = data.score || 0;
+                    coins = data.coins || 0;
                 } else {
+                    playerBestScore = 0;
                     coins = 0;
                 }
                 
@@ -864,20 +865,49 @@
             }
         }
 
-        // Save Score
+        // Save Score - Nur AKTUALISIEREN wenn besser (kein Add!)
         async function saveScore() {
             try {
-                await addDoc(collection(db, "highscores"), {
-                    name: playerName,
-                    score: score,
-                    coins: coins,
-                    timestamp: new Date()
-                });
+                const q = query(collection(db, "highscores"), where("name", "==", playerName));
+                const querySnapshot = await getDocs(q);
+                
+                if (!querySnapshot.empty) {
+                    // Spieler existiert - aktualisieren
+                    const existingDoc = querySnapshot.docs[0];
+                    const existingScore = existingDoc.data().score || 0;
+                    
+                    if (score > existingScore) {
+                        // Nur aktualisieren wenn besser
+                        await updateDoc(doc(db, "highscores", existingDoc.id), {
+                            score: score,
+                            coins: coins,
+                            timestamp: new Date()
+                        });
+                        scoreMessage.innerHTML = `🎉 NEUER REKORD!<br>Punkte: ${score}<br>Coins verdient: ${coins}`;
+                    } else {
+                        scoreMessage.innerHTML = `Punkte: ${score}<br>Coins verdient: ${coins}<br>Best: ${existingScore}`;
+                    }
+                } else {
+                    // Neuer Spieler - einmal erstellen
+                    const { addDoc } = await import("https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js");
+                    await addDoc(collection(db, "highscores"), {
+                        name: playerName,
+                        score: score,
+                        coins: coins,
+                        timestamp: new Date()
+                    });
+                    scoreMessage.innerHTML = `🎉 ERSTER EINTRAG!<br>Punkte: ${score}<br>Coins verdient: ${coins}`;
+                }
+                
+                playerBestScore = Math.max(playerBestScore, score);
                 loadLeaderboard();
             } catch (error) {
                 console.error("Fehler beim Speichern:", error);
             }
         }
+
+        // Import updateDoc
+        const { updateDoc } = await import("https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js");
 
         // Create Enemy
         const enemy = document.createElement("div");
@@ -936,7 +966,7 @@
                 enemy.style.top = "-90px";
                 enemy.style.left = Math.floor(Math.random() * 5) * 62.5 + 30 + "px";
                 score++;
-                coins += 10; // 10 Coins pro Auto
+                coins += 10;
                 scoreText.innerHTML = "Punkte: " + score;
                 coinsText.textContent = "💰 " + coins;
             }
@@ -958,14 +988,6 @@
         function endGame() {
             gameOver = true;
             gameRunning = false;
-            
-            if (score > playerBestScore) {
-                scoreMessage.innerHTML = `🎉 NEUER REKORD!<br>Punkte: ${score}<br>Coins verdient: ${coins}`;
-                playerBestScore = score;
-            } else {
-                scoreMessage.innerHTML = `Punkte: ${score}<br>Coins verdient: ${coins}`;
-            }
-            
             gameOverOverlay.classList.add("show");
             saveScore();
         }
