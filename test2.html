@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mein Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#eef3ff;
+    color:#222;
+}
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(10px);
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#4f46e5;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+    margin-left:25px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#4f46e5;
+}
+
+.hero{
+    height:100vh;
+    background:linear-gradient(135deg,#4f46e5,#06b6d4);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:22px;
+    max-width:700px;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:white;
+    color:#4f46e5;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+}
+
+section{
+    padding:100px 10%;
+}
+
+h2{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:50px;
+    color:#4f46e5;
+}
+
+.about{
+    text-align:center;
+    font-size:20px;
+    max-width:800px;
+    margin:auto;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    color:#4f46e5;
+    margin-bottom:15px;
+}
+
+.contact{
+    background:linear-gradient(135deg,#06b6d4,#4f46e5);
+    color:white;
+    border-radius:20px;
+    text-align:center;
+    padding:60px;
+}
+
+.contact p{
+    margin:15px 0;
+    font-size:20px;
+}
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<div class="logo">Max Mustermann</div>
+
+<nav>
+<a href="#about">Über mich</a>
+<a href="#projects">Projekte</a>
+<a href="#contact">Kontakt</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Hallo 👋 Ich bin Max</h1>
+
+<p>
+Webdesigner & Frontend-Entwickler.
+Ich entwickle moderne Webseiten mit HTML, CSS und JavaScript.
+</p>
+
+<a href="#projects" class="btn">Meine Projekte</a>
+
+</section>
+
+<section id="about">
+
+<h2>Über mich</h2>
+
+<p class="about">
+Ich interessiere mich für modernes Webdesign, Programmierung und kreative
+Lösungen. Mein Ziel ist es, professionelle Webseiten zu entwickeln, die
+schnell, modern und benutzerfreundlich sind.
+</p>
+
+</section>
+
+<section id="projects">
+
+<h2>Meine Projekte</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🌐 Portfolio</h3>
+<p>Eine moderne persönliche Webseite mit Animationen und responsivem Design.</p>
+</div>
+
+<div class="card">
+<h3>🛒 Online-Shop</h3>
+<p>Ein fiktiver Shop mit Produktübersicht und Warenkorb.</p>
+</div>
+
+<div class="card">
+<h3>📱 App Design</h3>
+<p>Design einer mobilen Anwendung mit modernem UI.</p>
+</div>
+
+<div class="card">
+<h3>📊 Dashboard</h3>
+<p>Ein Admin-Dashboard mit Diagrammen und Statistiken.</p>
+</div>
+
+<div class="card">
+<h3>🎮 Gaming Website</h3>
+<p>Landingpage für ein Gaming-Projekt mit coolen Farben.</p>
+</div>
+
+<div class="card">
+<h3>📷 Fotogalerie</h3>
+<p>Responsive Bildergalerie mit Hover-Effekten.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="contact">
+
+<h2 style="color:white;">Kontakt</h2>
+
+<p>📧 max.mustermann@email.de</p>
+
+<p>📱 +49 123 456789</p>
+
+<p>📍 Deutschland</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Max Mustermann | Alle Rechte vorbehalten.
+
+</footer>
+
+</body>
+</html>
