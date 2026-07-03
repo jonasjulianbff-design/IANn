@@ -49,6 +49,7 @@
             flex-wrap: wrap;
             justify-content: center;
             animation: fadeIn 0.8s ease-out;
+            max-width: 1200px;
         }
 
         #game {
@@ -103,13 +104,21 @@
             text-shadow: 0 0 10px rgba(30, 144, 255, 0.8);
         }
 
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 350px;
+        }
+
         .info-panel {
             background: rgba(22, 33, 62, 0.9);
             border: 3px solid #1ef0ff;
             border-radius: 10px;
             padding: 25px;
-            width: 300px;
             box-shadow: 0 0 30px rgba(30, 144, 255, 0.4);
+            max-height: 400px;
+            overflow-y: auto;
         }
 
         .info-panel h2 {
@@ -143,22 +152,102 @@
             font-size: 0.95em;
         }
 
-        .stats {
+        .player-info {
             background: rgba(30, 50, 80, 0.8);
             padding: 15px;
             border-radius: 8px;
-            border-left: 4px solid #ff4500;
+            border-left: 4px solid #ff9500;
+            margin-bottom: 15px;
         }
 
-        .stats strong {
+        .player-info strong {
             color: #ff9500;
             display: block;
             margin-bottom: 8px;
         }
 
-        .stats p {
-            margin: 5px 0;
+        .player-info input {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #1ef0ff;
+            border-radius: 5px;
+            background: rgba(10, 10, 30, 0.8);
+            color: #fff;
             font-size: 0.95em;
+            margin-top: 8px;
+        }
+
+        .player-info input::placeholder {
+            color: #888;
+        }
+
+        .leaderboard-panel {
+            background: rgba(22, 33, 62, 0.9);
+            border: 3px solid #ff4500;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.3);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .leaderboard-panel h2 {
+            margin-bottom: 15px;
+            color: #ff9500;
+            text-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
+            font-size: 1.3em;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 8px 0;
+            background: rgba(30, 50, 80, 0.6);
+            border-radius: 5px;
+            border-left: 4px solid #1ef0ff;
+        }
+
+        .leaderboard-item.top-1 {
+            background: rgba(255, 215, 0, 0.1);
+            border-left-color: #ffd700;
+            font-weight: bold;
+        }
+
+        .leaderboard-item.top-2 {
+            background: rgba(192, 192, 192, 0.1);
+            border-left-color: #c0c0c0;
+        }
+
+        .leaderboard-item.top-3 {
+            background: rgba(205, 127, 50, 0.1);
+            border-left-color: #cd7f32;
+        }
+
+        .leaderboard-rank {
+            font-weight: bold;
+            color: #1ef0ff;
+            min-width: 30px;
+        }
+
+        .leaderboard-name {
+            flex: 1;
+            margin: 0 15px;
+            color: #d0d0d0;
+        }
+
+        .leaderboard-score {
+            color: #ff9500;
+            font-weight: bold;
+            min-width: 50px;
+            text-align: right;
+        }
+
+        .loading {
+            text-align: center;
+            color: #1ef0ff;
+            font-size: 0.9em;
         }
 
         button {
@@ -184,13 +273,6 @@
 
         button:active {
             transform: translateY(0);
-        }
-
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: #a8a8a8;
-            font-size: 0.9em;
         }
 
         .game-over-overlay {
@@ -229,6 +311,51 @@
 
         .game-over-overlay button {
             width: 200px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #a8a8a8;
+            font-size: 0.9em;
+        }
+
+        .share-section {
+            background: rgba(30, 50, 80, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #1ef0ff;
+            margin-top: 15px;
+        }
+
+        .share-section strong {
+            color: #1ef0ff;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .share-link {
+            background: rgba(10, 10, 30, 0.8);
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #1ef0ff;
+            color: #1ef0ff;
+            font-size: 0.85em;
+            word-break: break-all;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .share-link:hover {
+            background: rgba(30, 144, 255, 0.2);
+        }
+
+        .copy-btn {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            font-size: 0.9em;
         }
 
         @keyframes slideDown {
@@ -279,14 +406,33 @@
                 left: 146px;
             }
 
-            .info-panel {
+            .sidebar {
                 width: 100%;
-                max-width: 300px;
+                max-width: 350px;
             }
 
             .game-container {
                 gap: 15px;
+                flex-direction: column;
             }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(30, 50, 80, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1ef0ff;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00bfff;
         }
     </style>
 </head>
@@ -307,21 +453,41 @@
             </div>
         </div>
 
-        <div class="info-panel">
-            <h2>📖 Spielanleitung</h2>
-            
-            <div class="controls">
-                <strong>Steuerung:</strong>
-                <p>⬅️ Pfeil links - nach links fahren</p>
-                <p>➡️ Pfeil rechts - nach rechts fahren</p>
+        <div class="sidebar">
+            <div class="info-panel">
+                <h2>📖 Spielanleitung</h2>
+                
+                <div class="player-info">
+                    <strong>👤 Dein Name:</strong>
+                    <input type="text" id="playerName" placeholder="Gib deinen Namen ein..." maxlength="20">
+                </div>
+
+                <div class="controls">
+                    <strong>Steuerung:</strong>
+                    <p>⬅️ Pfeil links - nach links fahren</p>
+                    <p>➡️ Pfeil rechts - nach rechts fahren</p>
+                </div>
+
+                <div class="controls">
+                    <strong>Ziel des Spiels:</strong>
+                    <p>Weiche den roten Autos aus und sammle Punkte! Jedes Auto, das du überholst, gibt dir einen Punkt.</p>
+                </div>
+
+                <button onclick="toggleGame()"><span id="toggleBtnText">Spiel pausieren</span></button>
+
+                <div class="share-section">
+                    <strong>🔗 Teile mit Freunden:</strong>
+                    <div class="share-link" id="shareLink" onclick="copyShareLink()">
+                        Klick hier zum Kopieren
+                    </div>
+                    <button class="copy-btn" onclick="copyShareLink()">📋 Link kopieren</button>
+                </div>
             </div>
 
-            <div class="stats">
-                <strong>Ziel des Spiels:</strong>
-                <p>Weiche den roten Autos aus und sammle Punkte! Jedes Auto, das du überholst, gibt dir einen Punkt.</p>
+            <div class="leaderboard-panel">
+                <h2>🏆 TOP 10 HIGHSCORES</h2>
+                <div id="leaderboard" class="loading">Lade Highscores...</div>
             </div>
-
-            <button onclick="toggleGame()"><span id="toggleBtnText">Spiel pausieren</span></button>
         </div>
     </div>
 
@@ -329,19 +495,117 @@
         <p>© 2026 Mini Rennspiel | Viel Spaß beim Spielen! 🎮</p>
     </footer>
 
-    <script>
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDMyPEBRQp8oaUy01GPr8QwLFNVaQwKVGk",
+            authDomain: "iann-mini-rennspiel.firebaseapp.com",
+            projectId: "iann-mini-rennspiel",
+            storageBucket: "iann-mini-rennspiel.appspot.com",
+            messagingSenderId: "926413276327",
+            appId: "1:926413276327:web:bb66088e1890b3b0dd0782",
+            measurementId: "G-RL5KVYTE4R"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Game Variables
         const game = document.getElementById("game");
         const player = document.getElementById("player");
         const scoreText = document.getElementById("score");
         const gameOverOverlay = document.getElementById("gameOverOverlay");
         const finalScoreText = document.getElementById("finalScore");
         const toggleBtn = document.getElementById("toggleBtnText");
+        const playerNameInput = document.getElementById("playerName");
+        const leaderboardDiv = document.getElementById("leaderboard");
 
         let playerX = 170;
         let score = 0;
         let gameOver = false;
         let gamePaused = false;
         let gameRunning = true;
+        let playerName = localStorage.getItem("playerName") || "";
+
+        // Set player name from localStorage
+        playerNameInput.value = playerName;
+        playerNameInput.addEventListener("change", () => {
+            playerName = playerNameInput.value || "Anonymer Spieler";
+            localStorage.setItem("playerName", playerName);
+        });
+
+        // Load Leaderboard
+        async function loadLeaderboard() {
+            try {
+                const q = query(collection(db, "highscores"), orderBy("score", "desc"), limit(10));
+                const querySnapshot = await getDocs(q);
+                
+                leaderboardDiv.innerHTML = "";
+                let rank = 1;
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const item = document.createElement("div");
+                    item.className = `leaderboard-item top-${rank}`;
+                    
+                    let medal = "·";
+                    if (rank === 1) medal = "🥇";
+                    else if (rank === 2) medal = "🥈";
+                    else if (rank === 3) medal = "🥉";
+                    
+                    item.innerHTML = `
+                        <span class="leaderboard-rank">${medal} ${rank}.</span>
+                        <span class="leaderboard-name">${data.name}</span>
+                        <span class="leaderboard-score">${data.score}</span>
+                    `;
+                    leaderboardDiv.appendChild(item);
+                    rank++;
+                });
+
+                if (querySnapshot.empty) {
+                    leaderboardDiv.innerHTML = "<p style='text-align: center; color: #888;'>Noch keine Scores vorhanden 🚀</p>";
+                }
+            } catch (error) {
+                console.error("Fehler beim Laden der Leaderboard:", error);
+                leaderboardDiv.innerHTML = "<p style='text-align: center; color: #ff4500;'>Fehler beim Laden ❌</p>";
+            }
+        }
+
+        // Save Score to Firebase
+        async function saveScore() {
+            const name = playerName || "Anonymer Spieler";
+            
+            try {
+                await addDoc(collection(db, "highscores"), {
+                    name: name,
+                    score: score,
+                    timestamp: new Date()
+                });
+                
+                // Reload leaderboard
+                loadLeaderboard();
+            } catch (error) {
+                console.error("Fehler beim Speichern:", error);
+            }
+        }
+
+        // Share Link
+        function copyShareLink() {
+            const link = window.location.href;
+            navigator.clipboard.writeText(link).then(() => {
+                alert("🔗 Link kopiert! Teile ihn mit deinen Freunden!");
+            }).catch(err => {
+                console.error("Fehler beim Kopieren:", err);
+            });
+        }
+
+        // Set share link display
+        document.getElementById("shareLink").textContent = window.location.href;
 
         // Create enemy
         const enemy = document.createElement("div");
@@ -421,6 +685,9 @@
             gameRunning = false;
             finalScoreText.textContent = "Punkte: " + score;
             gameOverOverlay.classList.add("show");
+            
+            // Save score to Firebase
+            saveScore();
         }
 
         function restartGame() {
@@ -449,7 +716,17 @@
             }
         }
 
+        // Start game and load leaderboard
         update();
+        loadLeaderboard();
+
+        // Reload leaderboard every 5 seconds
+        setInterval(loadLeaderboard, 5000);
+
+        // Make functions global
+        window.restartGame = restartGame;
+        window.toggleGame = toggleGame;
+        window.copyShareLink = copyShareLink;
     </script>
 </body>
 </html>
