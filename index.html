@@ -42,6 +42,92 @@
             margin-bottom: 15px;
         }
 
+        /* Name Screen */
+        #nameScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        #nameScreen.hidden {
+            display: none;
+        }
+
+        .name-container {
+            background: rgba(22, 33, 62, 0.95);
+            border: 3px solid #1ef0ff;
+            border-radius: 15px;
+            padding: 50px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 0 50px rgba(30, 144, 255, 0.6);
+        }
+
+        .name-container h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(30, 144, 255, 0.8);
+        }
+
+        .name-container p {
+            font-size: 1.2em;
+            color: #a8a8a8;
+            margin-bottom: 30px;
+        }
+
+        .name-container input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid #1ef0ff;
+            border-radius: 8px;
+            background: rgba(10, 10, 30, 0.8);
+            color: #fff;
+            text-align: center;
+            margin-bottom: 25px;
+            box-sizing: border-box;
+        }
+
+        .name-container input::placeholder {
+            color: #666;
+        }
+
+        .name-container input:focus {
+            outline: none;
+            background: rgba(30, 144, 255, 0.2);
+            box-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
+        }
+
+        .name-container button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
+        }
+
+        .name-container button:hover {
+            background: linear-gradient(135deg, #00bfff 0%, #1e90ff 100%);
+            box-shadow: 0 0 25px rgba(30, 144, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* Main Game */
         .game-container {
             display: flex;
             gap: 30px;
@@ -117,7 +203,7 @@
             border-radius: 10px;
             padding: 25px;
             box-shadow: 0 0 30px rgba(30, 144, 255, 0.4);
-            max-height: 400px;
+            max-height: 300px;
             overflow-y: auto;
         }
 
@@ -127,10 +213,24 @@
             text-shadow: 0 0 10px rgba(30, 144, 255, 0.6);
         }
 
-        .info-panel p {
-            margin: 12px 0;
-            line-height: 1.6;
-            color: #d0d0d0;
+        .player-info {
+            background: rgba(30, 50, 80, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ff9500;
+            margin-bottom: 15px;
+        }
+
+        .player-info strong {
+            color: #ff9500;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .player-info p {
+            color: #1ef0ff;
+            font-size: 1.2em;
+            font-weight: bold;
         }
 
         .controls {
@@ -150,35 +250,28 @@
         .controls p {
             margin: 5px 0;
             font-size: 0.95em;
+            color: #d0d0d0;
         }
 
-        .player-info {
-            background: rgba(30, 50, 80, 0.8);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #ff9500;
-            margin-bottom: 15px;
-        }
-
-        .player-info strong {
-            color: #ff9500;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .player-info input {
+        button {
             width: 100%;
-            padding: 8px;
-            border: 2px solid #1ef0ff;
-            border-radius: 5px;
-            background: rgba(10, 10, 30, 0.8);
-            color: #fff;
-            font-size: 0.95em;
-            margin-top: 8px;
+            padding: 12px;
+            margin-top: 15px;
+            background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
         }
 
-        .player-info input::placeholder {
-            color: #888;
+        button:hover {
+            background: linear-gradient(135deg, #00bfff 0%, #1e90ff 100%);
+            box-shadow: 0 0 25px rgba(30, 144, 255, 0.8);
+            transform: translateY(-2px);
         }
 
         .leaderboard-panel {
@@ -250,31 +343,6 @@
             font-size: 0.9em;
         }
 
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 15px;
-            background: linear-gradient(135deg, #1e90ff 0%, #00bfff 100%);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
-        }
-
-        button:hover {
-            background: linear-gradient(135deg, #00bfff 0%, #1e90ff 100%);
-            box-shadow: 0 0 25px rgba(30, 144, 255, 0.8);
-            transform: translateY(-2px);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
         .game-over-overlay {
             display: none;
             position: absolute;
@@ -302,6 +370,19 @@
             text-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
         }
 
+        .game-over-overlay .score-info {
+            font-size: 1.5em;
+            color: #1ef0ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(30, 144, 255, 0.8);
+        }
+
+        .game-over-overlay .score-info.new-record {
+            color: #ffd700;
+            font-size: 2em;
+            animation: pulse 0.5s infinite;
+        }
+
         .game-over-overlay p {
             font-size: 2em;
             color: #1ef0ff;
@@ -317,44 +398,6 @@
             margin-top: 40px;
             text-align: center;
             color: #a8a8a8;
-            font-size: 0.9em;
-        }
-
-        .share-section {
-            background: rgba(30, 50, 80, 0.8);
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #1ef0ff;
-            margin-top: 15px;
-        }
-
-        .share-section strong {
-            color: #1ef0ff;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .share-link {
-            background: rgba(10, 10, 30, 0.8);
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #1ef0ff;
-            color: #1ef0ff;
-            font-size: 0.85em;
-            word-break: break-all;
-            margin-top: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .share-link:hover {
-            background: rgba(30, 144, 255, 0.2);
-        }
-
-        .copy-btn {
-            width: 100%;
-            padding: 8px;
-            margin-top: 8px;
             font-size: 0.9em;
         }
 
@@ -376,6 +419,11 @@
             to {
                 opacity: 1;
             }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         @media (max-width: 768px) {
@@ -430,13 +478,20 @@
             background: #1ef0ff;
             border-radius: 10px;
         }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00bfff;
-        }
     </style>
 </head>
 <body>
+    <!-- Name Screen -->
+    <div id="nameScreen">
+        <div class="name-container">
+            <h1>🏎️ MINI RENNSPIEL</h1>
+            <p>Wie heißt du?</p>
+            <input type="text" id="nameInput" placeholder="Gib deinen Namen ein..." maxlength="20">
+            <button onclick="startGame()">🎮 SPIEL STARTEN</button>
+        </div>
+    </div>
+
+    <!-- Main Game -->
     <header>
         <h1>🏎️ MINI RENNSPIEL</h1>
         <p>Arcade Racing Game - Weiche dem Verkehr aus!</p>
@@ -449,6 +504,7 @@
             <div class="game-over-overlay" id="gameOverOverlay">
                 <h2>GAME OVER!</h2>
                 <p id="finalScore">Punkte: 0</p>
+                <div class="score-info" id="scoreMessage"></div>
                 <button onclick="restartGame()">Nochmal spielen</button>
             </div>
         </div>
@@ -458,8 +514,8 @@
                 <h2>📖 Spielanleitung</h2>
                 
                 <div class="player-info">
-                    <strong>👤 Dein Name:</strong>
-                    <input type="text" id="playerName" placeholder="Gib deinen Namen ein..." maxlength="20">
+                    <strong>👤 Spieler:</strong>
+                    <p id="currentPlayer">---</p>
                 </div>
 
                 <div class="controls">
@@ -474,14 +530,6 @@
                 </div>
 
                 <button onclick="toggleGame()"><span id="toggleBtnText">Spiel pausieren</span></button>
-
-                <div class="share-section">
-                    <strong>🔗 Teile mit Freunden:</strong>
-                    <div class="share-link" id="shareLink" onclick="copyShareLink()">
-                        Klick hier zum Kopieren
-                    </div>
-                    <button class="copy-btn" onclick="copyShareLink()">📋 Link kopieren</button>
-                </div>
             </div>
 
             <div class="leaderboard-panel">
@@ -498,7 +546,7 @@
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs, where } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
         // Firebase Config
         const firebaseConfig = {
@@ -521,8 +569,11 @@
         const scoreText = document.getElementById("score");
         const gameOverOverlay = document.getElementById("gameOverOverlay");
         const finalScoreText = document.getElementById("finalScore");
+        const scoreMessage = document.getElementById("scoreMessage");
         const toggleBtn = document.getElementById("toggleBtnText");
-        const playerNameInput = document.getElementById("playerName");
+        const nameScreen = document.getElementById("nameScreen");
+        const nameInput = document.getElementById("nameInput");
+        const currentPlayerDisplay = document.getElementById("currentPlayer");
         const leaderboardDiv = document.getElementById("leaderboard");
 
         let playerX = 170;
@@ -530,14 +581,53 @@
         let gameOver = false;
         let gamePaused = false;
         let gameRunning = true;
-        let playerName = localStorage.getItem("playerName") || "";
+        let playerName = "";
+        let playerBestScore = 0;
 
-        // Set player name from localStorage
-        playerNameInput.value = playerName;
-        playerNameInput.addEventListener("change", () => {
-            playerName = playerNameInput.value || "Anonymer Spieler";
+        // Start Game Function
+        window.startGame = function() {
+            const name = nameInput.value.trim();
+            if (!name) {
+                alert("Bitte gib deinen Namen ein!");
+                return;
+            }
+            
+            playerName = name;
             localStorage.setItem("playerName", playerName);
+            nameScreen.classList.add("hidden");
+            currentPlayerDisplay.textContent = playerName;
+            
+            loadPlayerBestScore();
+            loadLeaderboard();
+            update();
+        };
+
+        // Allow Enter key to start game
+        nameInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                window.startGame();
+            }
         });
+
+        // Load player's best score from Firebase
+        async function loadPlayerBestScore() {
+            try {
+                const q = query(
+                    collection(db, "highscores"),
+                    where("name", "==", playerName),
+                    orderBy("score", "desc"),
+                    limit(1)
+                );
+                const querySnapshot = await getDocs(q);
+                
+                if (!querySnapshot.empty) {
+                    playerBestScore = querySnapshot.docs[0].data().score;
+                }
+            } catch (error) {
+                console.error("Fehler beim Laden des Best Scores:", error);
+                playerBestScore = 0;
+            }
+        }
 
         // Load Leaderboard
         async function loadLeaderboard() {
@@ -576,36 +666,32 @@
             }
         }
 
-        // Save Score to Firebase
+        // Save Score to Firebase - nur wenn besser als vorher
         async function saveScore() {
-            const name = playerName || "Anonymer Spieler";
+            if (score <= playerBestScore) {
+                scoreMessage.textContent = `Dein Best Score: ${playerBestScore} 💪`;
+                scoreMessage.classList.remove("new-record");
+                return;
+            }
             
             try {
                 await addDoc(collection(db, "highscores"), {
-                    name: name,
+                    name: playerName,
                     score: score,
                     timestamp: new Date()
                 });
+                
+                scoreMessage.textContent = `🎉 NEUER PERSÖNLICHER REKORD! 🎉`;
+                scoreMessage.classList.add("new-record");
+                playerBestScore = score;
                 
                 // Reload leaderboard
                 loadLeaderboard();
             } catch (error) {
                 console.error("Fehler beim Speichern:", error);
+                scoreMessage.textContent = "Fehler beim Speichern ❌";
             }
         }
-
-        // Share Link
-        function copyShareLink() {
-            const link = window.location.href;
-            navigator.clipboard.writeText(link).then(() => {
-                alert("🔗 Link kopiert! Teile ihn mit deinen Freunden!");
-            }).catch(err => {
-                console.error("Fehler beim Kopieren:", err);
-            });
-        }
-
-        // Set share link display
-        document.getElementById("shareLink").textContent = window.location.href;
 
         // Create enemy
         const enemy = document.createElement("div");
@@ -686,11 +772,11 @@
             finalScoreText.textContent = "Punkte: " + score;
             gameOverOverlay.classList.add("show");
             
-            // Save score to Firebase
+            // Save score to Firebase (nur wenn besser)
             saveScore();
         }
 
-        function restartGame() {
+        window.restartGame = function() {
             playerX = 170;
             score = 0;
             gameOver = false;
@@ -703,9 +789,9 @@
             enemy.style.left = Math.floor(Math.random() * 5) * 70 + 25 + "px";
             toggleBtn.textContent = "Spiel pausieren";
             update();
-        }
+        };
 
-        function toggleGame() {
+        window.toggleGame = function() {
             if (gameOver) return;
             
             gamePaused = !gamePaused;
@@ -714,19 +800,16 @@
             if (!gamePaused) {
                 update();
             }
-        }
-
-        // Start game and load leaderboard
-        update();
-        loadLeaderboard();
+        };
 
         // Reload leaderboard every 5 seconds
         setInterval(loadLeaderboard, 5000);
 
-        // Make functions global
-        window.restartGame = restartGame;
-        window.toggleGame = toggleGame;
-        window.copyShareLink = copyShareLink;
+        // Set saved name if exists
+        const savedName = localStorage.getItem("playerName");
+        if (savedName) {
+            nameInput.value = savedName;
+        }
     </script>
 </body>
 </html>
